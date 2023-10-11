@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('./database/mongoose');
-
+const cors=require("cors");
 const TaskList = require('./database/models/taskList');
 const Task = require('./database/models/task');
-const port = process.env.PORT || 3000;
 
 /*
 CORS - Cross Origin Request Security
@@ -13,6 +12,7 @@ Frontend - http://localhost:4200
 */
 // 3rd party library, app.use(cors());
 // Add headers
+app.use(cors())
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -179,6 +179,6 @@ app.delete('/tasklists/:tasklistId/tasks/:taskId', (req, res) => {
     console.log("Server started on port 3000");
 });*/
 
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log("Server started on port 3000");
 });
